@@ -46,7 +46,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Nest is [MIT licensed].
 
 ## Pre commit
 
@@ -58,10 +58,31 @@ npm install
 npm install lint-staged -D
 # Update pre-commit file to run lint-staged when you commit
 npx lint-staged
-# Add lint-staged config in package.json file
+# Add lint-staged mongodbConfig in package.json file
 eg.
   "lint-staged": {
     "*.{js,ts}": "eslint --fix",
     "*.{js,ts,scss,json,md}": "prettier --write"
   }
+```
+
+## CLI generate CRUD
+
+```bash
+nest g resource users
+# https://docs.nestjs.com/recipes/crud-generator
+```
+
+## Setup load .env variables
+
+```bash
+npm i --save @nestjs/config
+#https://docs.nestjs.com/techniques/configuration
+```
+
+## Setup MongoDB
+
+```bash
+npm i @nestjs/mongoose mongoose
+#https://docs.nestjs.com/recipes/mongodb
 ```
