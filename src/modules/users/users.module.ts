@@ -1,9 +1,9 @@
+import { DATABASE_CONNECTION } from '@config/constants';
 import { Module } from '@nestjs/common';
 import { Connection } from 'mongoose';
-import { DATABASE_CONNECTION } from 'src/config/constants';
 import { User, UserSchema } from './schemas/user.schema';
-import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
+import { UsersService } from './users.service';
 
 @Module({
   controllers: [UsersController],
@@ -16,5 +16,6 @@ import { UsersController } from './users.controller';
     },
     UsersService,
   ],
+  exports: [UsersService],
 })
 export class UsersModule {}

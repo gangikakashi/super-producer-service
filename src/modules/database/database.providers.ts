@@ -1,6 +1,5 @@
+import { DATABASE_CONNECTION } from '@config/constants';
 import * as mongoose from 'mongoose';
-import * as process from 'process';
-import { DATABASE_CONNECTION } from '../../config/constants';
 
 export const mongoProviders = [
   {

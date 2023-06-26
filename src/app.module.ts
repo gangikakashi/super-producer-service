@@ -1,24 +1,31 @@
+import { appConfig } from '@config/app.config';
+import { jwtConfig } from '@config/jwt.config';
+import { LoggerMiddleware } from '@middlewares/logger/logger.middleware';
+import { AuthModule } from '@modules/auth/auth.module';
+import { DatabaseModule } from '@modules/database/database.module';
+import { ProductsModule } from '@modules/products/products.module';
+import { UsersModule } from '@modules/users/users.module';
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { nestjsConfig } from './config/config';
-import { LoggerMiddleware } from './middlewares/logger/logger.middleware';
-import { DatabaseModule } from './modules/database/database.module';
-import { ProductsModule } from './modules/products/products.module';
-import { UsersModule } from './modules/users/users.module';
 
-const featureModules = [UsersModule, ProductsModule];
+const featureModules = [AuthModule, UsersModule, ProductsModule];
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: process.env.NODE_ENV === 'prod' ? '.env.prod' : '.env.dev',
-      load: [nestjsConfig],
+      load: [appConfig],
       cache: true,
       expandVariables: true,
     }),
+    {
+      ...JwtModule.registerAsync(jwtConfig),
+      global: true,
+    },
     DatabaseModule,
     ...featureModules,
   ],

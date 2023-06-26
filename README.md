@@ -77,6 +77,7 @@ nest g resource users
 
 ```bash
 npm i --save @nestjs/config
+Using the ConfigService: constructor(private configService: ConfigService) {}
 #https://docs.nestjs.com/techniques/configuration
 ```
 
@@ -85,4 +86,24 @@ npm i --save @nestjs/config
 ```bash
 npm i @nestjs/mongoose mongoose
 #https://docs.nestjs.com/recipes/mongodb
+```
+
+## Implement auth-jwt
+
+```bash
+npm i --save @nestjs/jwt
+#https://docs.nestjs.com/security/authentication
+```
+
+```bash
+# CLI generate Guard
+nest g guard auth --flat
+```
+
+## Hashing
+
+```bash
+npm i bcrypt
+npm i -D @types/bcrypt
+#https://docs.nestjs.com/security/encryption-and-hashing#hashing
 ```

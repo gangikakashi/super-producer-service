@@ -1,8 +1,8 @@
+import { DATABASE_CONNECTION } from '@config/constants';
 import { Module } from '@nestjs/common';
 import { Connection } from 'mongoose';
-import { DATABASE_CONNECTION } from '../../config/constants';
-import { ProductsService } from './products.service';
 import { ProductsController } from './products.controller';
+import { ProductsService } from './products.service';
 import { Product, ProductSchema } from './schemas/product.schema';
 
 @Module({
